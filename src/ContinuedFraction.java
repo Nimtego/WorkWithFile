@@ -55,11 +55,11 @@ public class ContinuedFraction {
                 if (exp.charAt(i) == '*' || exp.charAt(i) == '/' && i != 0) {
                     flagOfOperator = i;
                     for (int j = flagOfOperator - 1; j > 0;) {
-                        if (Character.isDigit(exp.charAt(j)) || exp.charAt(j) == '-') {
-                            startReplace = j;
+                        if (Character.isDigit(exp.charAt(j)) || (exp.charAt(j) == '-' && !Character.isDigit(exp.charAt(j - 1)))) {
                             --j;
                             continue;
                         }
+                        startReplace = j + 1;
                         break;
                     }
                     for (int k = flagOfOperator + 1; k < exp.length();) {
@@ -154,4 +154,3 @@ public class ContinuedFraction {
         return first * second;
     }
 }
-
