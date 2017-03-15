@@ -5,7 +5,10 @@ public class ContinuedFraction {
     private static String fraction = "";
     public static void fraction() {
         fraction = (Utilits.takeFraction().replaceAll(" ", ""));
+        long timeout= System.currentTimeMillis();
         calculate(fraction);
+        long time = System.currentTimeMillis() - timeout;
+        System.out.println("TIME :" +(float)time / 1000);
     }
     private static void calculate(String toCalculate) {
         try {
